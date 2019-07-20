@@ -7,10 +7,16 @@ Using the Room struct below, write code that demonstrates that it is a value typ
 
 ```swift
 struct Room {
-     let maxOccupancy: Int
-     let length: Double
-     let width: Double
+var maxOccupancy: Int
+var length: Double
+var width: Double
 }
+var roomA = Room(maxOccupancy: 5, length: 5.0, width: 5.0)
+var roomB = roomA
+roomA = Room(maxOccupancy: 10, length: 10.0, width: 10.0)
+
+print(roomA)
+print(roomB)
 ```
 
 ## Question 2
@@ -35,6 +41,18 @@ class Animal {
         print("I am an animal named \(name)")
     }
 }
+
+class Animal {
+var name: String = ""
+
+func printDescription() {
+print("I am an animal named \(name)")
+}
+}
+
+class Bird: Animal {
+var canFly = true
+}
 ```
 
 b. Override the printDescription method to have the instance of the Bird object print out its name and whether it can fly
@@ -57,6 +75,28 @@ class Bike {
 
 
 a. Create a `LoudBike` subclass of Bike.  When you call `ringBell` it should ring the bell in all caps.
+
+```swift
+class Bike {
+let wheelNumber = 2
+let wheelWidth = 1.3
+var hasBell = true
+func ringBell() {
+if hasBell {
+print("Ring!")
+}
+}
+}
+
+class LoudBike: Bike {
+override func ringBell() {
+print("BRINGGG BRINNNGGGG")
+}
+}
+
+var bike1 = LoudBike()
+bike1.ringBell()
+```
 
 b. Give `LoudBike` a new method called `ringBell(times:)` that rings the bell a given number of times
 
@@ -158,6 +198,14 @@ circleOne.contains(circleOne.getRandomPoint()) //Should always be true
 ## Question 7
 
 a. Create a struct called HangmanModel with 3 properties `targetWord: String`, `numberOfIncorrectGuesses: Int` and `guessedLetters: [Character]`.
+
+```swift
+struct HangmanModel {
+var targetWord: String
+var numberOfIncorrectGuesses: Int
+var guessedLetters: [Character]
+}
+```
 
 b. Add a method called `playerWon` that returns whether all of the characters in `targetWord` are in `guessedLetters`
 
