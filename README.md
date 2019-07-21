@@ -168,9 +168,47 @@ return sideLength * 4
 
 c. Override the `name` property of `Square` so that it returns a String containing its name ("Square") and its area and perimeter
 
+```swift
+class Square: Shape {
+var sideLength = 5.0
+override var area: Double {
+return pow(sideLength, 2)
+}
+override var perimeter: Double {
+return sideLength * 4
+}
+override var name: String {
+return "Square, \(area) and \(perimeter)"
+}
+}
+```
+
 d. Create a class `Rectangle` that subclasses from `Shape`.  Give it a `width` property with a default value of 6 and a `height` property with a default value of 4
 
+```swift
+class Rectangle: Shape {
+var width = 6
+var height = 4
+}
+```
+
 e. Override the `name` property of `Rectangle` so that it returns a String containing its name ("Rectangle") and its area and perimeter.
+
+```swift
+class Rectangle: Shape {
+var width = 6.0
+var height = 4.0
+override var perimeter: Double {
+return 2 * width + 2 * height
+}
+override var area: Double {
+return width * height
+}
+override var name: String {
+return "Rectangle, this is the area, \(area) and this is the perimeter \(perimeter)"
+}
+}
+```
 
 f. (BONUS) What happens when you run the code below?  Explain why.
 
@@ -205,6 +243,10 @@ struct Point {
     let y: Double
     func distance(to point: Point) -> Double {
       //Code in your answer here
+      let horizontalDistance = self.x - point.x
+      let verticalDistance = self.y - point.y
+      let distanceBetweenTwoPoints = sqrt(horizontalDistance * horizontalDistance + verticalDistance * verticalDistance)
+      return distanceBetweenTwoPoints
     }
 }
 
