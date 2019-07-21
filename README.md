@@ -7,13 +7,14 @@ Using the Room struct below, write code that demonstrates that it is a value typ
 
 ```swift
 struct Room {
-var maxOccupancy: Int
-var length: Double
-var width: Double
+let maxOccupancy: Int
+let length: Double
+let width: Double
 }
-var roomA = Room(maxOccupancy: 5, length: 5.0, width: 5.0)
+
+var roomA = Room(maxOccupancy: 5, length: 5, width: 5)
 var roomB = roomA
-roomA = Room(maxOccupancy: 10, length: 10.0, width: 10.0)
+roomA = Room(maxOccupancy: 10, length: 10, width: 10)
 
 print(roomA)
 print(roomB)
@@ -25,9 +26,16 @@ Using the Bike class below, write code that demonstrates that it is a reference 
 
 ```swift
 class Bike {
-    var wheelNumber = 2
-    var hasBell = false
+var wheelNumber = 2
+var hasBell = false
 }
+
+var bike1 = Bike()
+bike1.wheelNumber = 5
+var bike2 = bike1
+bike2.wheelNumber = 90
+print(bike1.wheelNumber)
+print(bike2.wheelNumber)
 ```
 
 ## Question 3
@@ -41,6 +49,8 @@ class Animal {
         print("I am an animal named \(name)")
     }
 }
+
+// My code below
 
 class Animal {
 var name: String = ""
@@ -57,6 +67,21 @@ var canFly = true
 
 b. Override the printDescription method to have the instance of the Bird object print out its name and whether it can fly
 
+```swift
+class Animal {
+var name: String = ""
+func printDescription() {
+print("I am an animal named \(name)")
+}
+}
+
+class Bird: Animal {
+var canFly = true
+override func printDescription() {
+print("I am an animal named \(name) and it's \(canFly) that I can fly")
+}
+}
+```
 
 ## Question 4
 
@@ -77,6 +102,9 @@ class Bike {
 a. Create a `LoudBike` subclass of Bike.  When you call `ringBell` it should ring the bell in all caps.
 
 ```swift
+
+// Below is for Part A and B
+
 class Bike {
 let wheelNumber = 2
 let wheelWidth = 1.3
@@ -90,12 +118,17 @@ print("Ring!")
 
 class LoudBike: Bike {
 override func ringBell() {
-print("BRINGGG BRINNNGGGG")
+print("RING!")
+}
+func ringBell(times times: Int) {
+for i in 0..<times {
+ringBell()
+}
 }
 }
 
 var bike1 = LoudBike()
-bike1.ringBell()
+bike1.ringBell(times: 5)
 ```
 
 b. Give `LoudBike` a new method called `ringBell(times:)` that rings the bell a given number of times
@@ -113,7 +146,25 @@ class Shape {
 
 a. Given the `Shape` object above, create a subclass `Square` with a property `sideLength` with a default value of 5.
 
+```swift
+class Square: Shape {
+var sideLength = 5.0
+}
+```
+
 b. Override the `area` and `perimeter` computed values so the return the area/perimeter of the square as appropriate
+
+```swift
+class Square: Shape {
+var sideLength = 5.0
+override var area: Double {
+return pow(sideLength, 2)
+}
+override var perimeter: Double {
+return sideLength * 4
+}
+}
+```
 
 c. Override the `name` property of `Square` so that it returns a String containing its name ("Square") and its area and perimeter
 
